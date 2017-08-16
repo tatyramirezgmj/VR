@@ -1,7 +1,0 @@
-<%= form_with(model: @game, url: games_path(@game)) do |f|  %>
-<p>
-  <%= f.label(:name, "Select The Game") %>
-  <%= f.text_field :name %>
-</p>
-<p><%= f.submit("Start Playing") %></p>
-<% end %>
