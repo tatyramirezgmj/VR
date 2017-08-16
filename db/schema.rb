@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816141849) do
+ActiveRecord::Schema.define(version: 20170816150012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20170816141849) do
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "game_id"
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_stats_on_game_id"
+    t.index ["user_id"], name: "index_stats_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -33,4 +43,6 @@ ActiveRecord::Schema.define(version: 20170816141849) do
   end
 
   add_foreign_key "games", "users"
+  add_foreign_key "stats", "games"
+  add_foreign_key "stats", "users"
 end
