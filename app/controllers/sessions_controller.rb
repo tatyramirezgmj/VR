@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user and @user.authenticate(params[:password])
       session[:user_id]= @user.id
-      redirect_to users_path, notice: 'You have succesfully logged in.'
+      redirect_to games_path, notice: 'You have succesfully logged in.'
     else
       return render action: 'new' unless @user
     end

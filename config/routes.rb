@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'games/index'
-
-  get 'games/show'
 
   root 'users#new'
 
@@ -9,4 +6,5 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   resource :sessions
   resources :users
+  resources :games
 end
